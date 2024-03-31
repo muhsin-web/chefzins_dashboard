@@ -1,95 +1,66 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+import React from 'react'
+import {
+  Box,
+  chakra,
+  Flex,
+  SimpleGrid,
+  Stat,
+  StatLabel,
+  StatNumber,
+  useColorModeValue,
+} from '@chakra-ui/react'
+import { ReactNode } from 'react'
+import { BsPerson } from 'react-icons/bs'
+import { FiServer } from 'react-icons/fi'
+import { GoLocation } from 'react-icons/go'
 
+interface StatsCardProps {
+  title: string
+  stat: string
+  icon: ReactNode
+}
+
+function StatsCard(props: StatsCardProps) {
+  const { title, stat, icon } = props
+  return (
+    <Stat
+      px={{ base: 2, md: 4 }}
+      py={'5'}
+      shadow={'xl'}
+      border={'1px solid'}
+      borderColor={useColorModeValue('gray.800', 'gray.500')}
+      rounded={'lg'}>
+      <Flex justifyContent={'space-between'}>
+        <Box pl={{ base: 2, md: 4 }}>
+          <StatLabel fontWeight={'medium'} isTruncated>
+            {title}
+          </StatLabel>
+          <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
+            {stat}
+          </StatNumber>
+        </Box>
+        <Box
+          my={'auto'}
+          color={useColorModeValue('gray.800', 'gray.200')}
+          alignContent={'center'}>
+          {icon}
+        </Box>
+      </Flex>
+    </Stat>
+  )
+}
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
+      <chakra.h1 fontSize={'4xl'} py={10} fontWeight={'bold'}>
+        Analytics
+      </chakra.h1>
+      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
+        <StatsCard title={'Orders'} stat={'5,000'} icon={<BsPerson size={'3em'} />} />
+        <StatsCard title={'Course Applicants'} stat={'1,000'} icon={<FiServer size={'3em'} />} />
+        <StatsCard title={'Total sales'} stat={'7'} icon={<GoLocation size={'3em'} />} />
+      </SimpleGrid>
+    </Box>
   );
 }
