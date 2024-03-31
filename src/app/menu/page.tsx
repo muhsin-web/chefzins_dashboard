@@ -8,7 +8,7 @@ import {db} from '../../config/firebase'
 import {getDocs, collection, doc, deleteDoc} from 'firebase/firestore'
 import { DeleteIcon } from '@chakra-ui/icons'
 
-const page = () => {
+const Page = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const addref = useRef(null)
   const editref = useRef(null)
@@ -150,4 +150,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

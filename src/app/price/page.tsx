@@ -9,7 +9,6 @@ import {
   ListItem,
   ListIcon,
   Button,
-  useColorModeValue,
   Flex,
   FormControl,
   FormLabel,
@@ -23,7 +22,7 @@ import {getDocs, addDoc, collection, doc, deleteDoc} from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
 
-export default function page() {
+export default function Page() {
   const [priceList, setPriceList] = useState<any>([]) 
   const [feature, setfeature] = useState<any>([])
   const [type, setType] = useState('')
@@ -132,7 +131,7 @@ export default function page() {
               key={index}
               flex={1}
               w={'full'}
-              bg={useColorModeValue('white', 'gray.800')}
+              bg={'white'}
               boxShadow={'2xl'}
               rounded={'md'}
               overflow={'hidden'}>
@@ -143,12 +142,12 @@ export default function page() {
               <Stack
                 textAlign={'center'}
                 p={6}
-                color={useColorModeValue('gray.800', 'white')}
+                color={'gray.800'}
                 align={'center'}>
                 <Text
                   fontSize={'sm'}
                   fontWeight={500}
-                  bg={useColorModeValue('green.50', 'green.900')}
+                  bg={'green.50'}
                   p={2}
                   px={3}
                   color={'green.500'}
@@ -164,7 +163,7 @@ export default function page() {
                 </Stack>
               </Stack>
       
-              <Box bg={useColorModeValue('gray.50', 'gray.900')} px={6} py={10}>
+              <Box bg={'gray.50'} px={6} py={10}>
                 <List spacing={3}>
                   {
                     features.map((fea: any, index: number) => {
@@ -216,8 +215,8 @@ export default function page() {
 
         <Flex gap={5}>
           {
-            feature.length > 0 && feature.map((item: string) => (
-              <Text>{item}</Text>
+            feature.length > 0 && feature.map((item: string, index:number) => (
+              <Text key={index}>{item}</Text>
             ))
           }
         </Flex>

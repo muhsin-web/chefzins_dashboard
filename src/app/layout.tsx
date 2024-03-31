@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
         <body className={inter.className}>
           <ChakraProvider>
-            <Wrapper children={children}/>
+            <Wrapper>{children}</Wrapper>
           </ChakraProvider>  
         </body>
     </html>

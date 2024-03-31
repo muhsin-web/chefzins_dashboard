@@ -7,7 +7,7 @@ import {storage} from '../../config/firebase'
 import {ref, uploadBytes} from 'firebase/storage' 
 import {v4} from 'uuid'
 
-const page = () => {
+const Page = () => {
     const [loading, setLoading] = useState(false)
     const [name, setName] = useState('')
     const [desc, setDesc] = useState('')
@@ -116,4 +116,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
